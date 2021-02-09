@@ -22,8 +22,12 @@ public final class RealmFeedStore: FeedStore {
 	
 	public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
 		let realmFeed = Self.map(feed: feed, timestamp: timestamp)
+		let existingRealmFeed = realm.objects(RealmFeedItems.self)
 		do {
-			try realm.write { realm.add(realmFeed) }
+			try realm.write {				
+				realm.delete(existingRealmFeed)
+				realm.add(realmFeed)
+			}
 			completion(.none)
 		} catch {
 			completion(error)
