@@ -78,11 +78,15 @@ class FeedStoreIntegrationTests: XCTestCase {
 	}
 	
 	private func setupEmptyStoreState() {
-		try? FileManager.default.removeItem(at: testsRealmStoreURL())
+		removeRealmFromDisk()
 	}
 	
 	private func undoStoreSideEffects() {
-		
+		removeRealmFromDisk()
+	}
+	
+	private func removeRealmFromDisk() {
+		try? FileManager.default.removeItem(at: testsRealmStoreURL())
 	}
 	
 	private func cacheDirectoryURL() -> URL {
