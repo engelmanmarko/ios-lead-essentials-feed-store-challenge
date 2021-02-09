@@ -17,15 +17,19 @@ public final class RealmFeedStore: FeedStore {
 	}
 	
 	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
-		
+		do {
+			try realm.write { realm.delete(currentFeeds()) }
+			completion(.none)
+		} catch let error {
+			completion(.some(error))
+		}
 	}
 	
 	public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
 		let realmFeed = Self.map(feed: feed, timestamp: timestamp)
-		let existingRealmFeed = realm.objects(RealmFeedItems.self)
 		do {
-			try realm.write {				
-				realm.delete(existingRealmFeed)
+			try realm.write {
+				realm.delete(currentFeeds())
 				realm.add(realmFeed)
 			}
 			completion(.none)
@@ -42,6 +46,10 @@ public final class RealmFeedStore: FeedStore {
 
 // MARK: - Private
 private extension RealmFeedStore {
+	func currentFeeds() -> Results<RealmFeedItems> {
+		return realm.objects(RealmFeedItems.self)
+	}
+	
 	static func map(feed: [LocalFeedImage], timestamp: Date) -> RealmFeedItems {
 		let realmLocalFeed = RealmFeedItems()
 		let items = feed.map { Self.map(image: $0) }
