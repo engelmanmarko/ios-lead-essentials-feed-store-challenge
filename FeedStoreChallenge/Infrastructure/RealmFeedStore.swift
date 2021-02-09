@@ -26,7 +26,7 @@ public final class RealmFeedStore: FeedStore {
 	}
 	
 	public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
-		let realmFeed = Self.map(feed: feed, timestamp: timestamp)
+		let realmFeed = LocalFeedImageMapper.map(feed: feed, timestamp: timestamp)
 		do {
 			try realm.write {
 				realm.delete(currentFeeds())
@@ -40,7 +40,7 @@ public final class RealmFeedStore: FeedStore {
 	
 	public func retrieve(completion: @escaping RetrievalCompletion) {
 		guard let realmFeed = realm.objects(RealmFeedItems.self).first else { return completion(.empty) }
-		completion(.found(feed: realmFeed.feed.compactMap { Self.map(realmImage: $0) }, timestamp: realmFeed.timestamp))
+		completion(.found(feed: realmFeed.feed.compactMap { LocalFeedImageMapper.map(realmImage: $0) }, timestamp: realmFeed.timestamp))
 	}
 }
 
@@ -48,38 +48,5 @@ public final class RealmFeedStore: FeedStore {
 private extension RealmFeedStore {
 	func currentFeeds() -> Results<RealmFeedItems> {
 		return realm.objects(RealmFeedItems.self)
-	}
-	
-	static func map(feed: [LocalFeedImage], timestamp: Date) -> RealmFeedItems {
-		let realmLocalFeed = RealmFeedItems()
-		let items = feed.map { Self.map(image: $0) }
-		realmLocalFeed.feed.append(objectsIn: items)
-		realmLocalFeed.timestamp = timestamp
-		return realmLocalFeed
-	}
-	
-	static func map(image: LocalFeedImage) -> RealmFeedImage {
-		return RealmFeedImage(
-			id: image.id,
-			description: image.description,
-			location: image.location,
-			url: image.url
-		)
-	}
-	
-	static func map(realmImage: RealmFeedImage) -> LocalFeedImage? {
-		guard
-			let id = UUID(uuidString: realmImage.id),
-			let url = URL(string: realmImage.url)
-		else {
-			return nil
-		}
-		
-		return LocalFeedImage(
-			id: id,
-			description: realmImage.imageDescription,
-			location: realmImage.location,
-			url: url
-		)
 	}
 }

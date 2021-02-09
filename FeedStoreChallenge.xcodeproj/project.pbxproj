@@ -23,6 +23,7 @@
 		538E358525D2ABC3000723A6 /* RealmFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538E358425D2ABC3000723A6 /* RealmFeedStore.swift */; };
 		538E358C25D2ADC2000723A6 /* RealmFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538E358B25D2ADC2000723A6 /* RealmFeedImage.swift */; };
 		538E359025D2B00D000723A6 /* RealmFeedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538E358F25D2B00D000723A6 /* RealmFeedItems.swift */; };
+		53D59A5725D2C9E300C0AE77 /* LocalFeedImageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D59A5625D2C9E300C0AE77 /* LocalFeedImageMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		538E358425D2ABC3000723A6 /* RealmFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFeedStore.swift; sourceTree = "<group>"; };
 		538E358B25D2ADC2000723A6 /* RealmFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFeedImage.swift; sourceTree = "<group>"; };
 		538E358F25D2B00D000723A6 /* RealmFeedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFeedItems.swift; sourceTree = "<group>"; };
+		53D59A5625D2C9E300C0AE77 /* LocalFeedImageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedImageMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		538E358825D2ABC6000723A6 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				53D59A5625D2C9E300C0AE77 /* LocalFeedImageMapper.swift */,
 				538E358425D2ABC3000723A6 /* RealmFeedStore.swift */,
 				538E358B25D2ADC2000723A6 /* RealmFeedImage.swift */,
 				538E358F25D2B00D000723A6 /* RealmFeedItems.swift */,
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53D59A5725D2C9E300C0AE77 /* LocalFeedImageMapper.swift in Sources */,
 				08CE2BA62285BCB600183A1B /* FeedStore.swift in Sources */,
 				538E359025D2B00D000723A6 /* RealmFeedItems.swift in Sources */,
 				538E358525D2ABC3000723A6 /* RealmFeedStore.swift in Sources */,
