@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		08CE2BB22285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE2BAD2285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */; };
 		08CE2BB32285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE2BAE2285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift */; };
 		08CE2BB52285BEF100183A1B /* FeedStoreChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */; };
+		538E357F25D2AB5B000723A6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 538E357E25D2AB5B000723A6 /* Realm */; };
+		538E358125D2AB5B000723A6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 538E358025D2AB5B000723A6 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				538E358125D2AB5B000723A6 /* RealmSwift in Frameworks */,
+				538E357F25D2AB5B000723A6 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +150,10 @@
 			dependencies = (
 			);
 			name = FeedStoreChallenge;
+			packageProductDependencies = (
+				538E357E25D2AB5B000723A6 /* Realm */,
+				538E358025D2AB5B000723A6 /* RealmSwift */,
+			);
 			productName = FeedStoreChallenge;
 			productReference = 08CE2B8B2285BBD100183A1B /* FeedStoreChallenge.framework */;
 			productType = "com.apple.product-type.framework";
@@ -197,6 +205,9 @@
 				Base,
 			);
 			mainGroup = 08CE2B812285BBD100183A1B;
+			packageReferences = (
+				538E357D25D2AB5B000723A6 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 08CE2B8C2285BBD100183A1B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -509,6 +520,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		538E357D25D2AB5B000723A6 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		538E357E25D2AB5B000723A6 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 538E357D25D2AB5B000723A6 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		538E358025D2AB5B000723A6 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 538E357D25D2AB5B000723A6 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 08CE2B822285BBD100183A1B /* Project object */;
 }
