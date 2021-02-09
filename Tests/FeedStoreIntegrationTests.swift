@@ -4,6 +4,7 @@
 
 import XCTest
 import FeedStoreChallenge
+import RealmSwift
 
 class FeedStoreIntegrationTests: XCTestCase {
 	
@@ -27,9 +28,9 @@ class FeedStoreIntegrationTests: XCTestCase {
 	}
 	
 	func test_retrieve_deliversEmptyOnEmptyCache() {
-		//        let sut = makeSUT()
-		//
-		//        expect(sut, toRetrieve: .empty)
+		let sut = makeSUT()
+		
+		expect(sut, toRetrieve: .empty)
 	}
 	
 	func test_retrieve_deliversFeedInsertedOnAnotherInstance() {
@@ -72,15 +73,25 @@ class FeedStoreIntegrationTests: XCTestCase {
 	// - MARK: Helpers
 	
 	private func makeSUT() -> FeedStore {
-		fatalError("Must be implemented")
+		let configuration = Realm.Configuration(fileURL: testsRealmStoreURL())
+		return try! RealmFeedStore(configuration: configuration)
 	}
 	
 	private func setupEmptyStoreState() {
-		
+		try? FileManager.default.removeItem(at: testsRealmStoreURL())
 	}
 	
 	private func undoStoreSideEffects() {
 		
 	}
 	
+	private func cacheDirectoryURL() -> URL {
+		return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+	}
+	
+	private func testsRealmStoreURL() -> URL {
+		return cacheDirectoryURL()
+			.appendingPathComponent("\(type(of: self))")
+			.appendingPathExtension("realmDB")
+	}
 }
