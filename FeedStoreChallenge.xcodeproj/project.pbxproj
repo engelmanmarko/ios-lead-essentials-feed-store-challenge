@@ -20,6 +20,7 @@
 		08CE2BB52285BEF100183A1B /* FeedStoreChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */; };
 		538E357F25D2AB5B000723A6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 538E357E25D2AB5B000723A6 /* Realm */; };
 		538E358125D2AB5B000723A6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 538E358025D2AB5B000723A6 /* RealmSwift */; };
+		538E358525D2ABC3000723A6 /* RealmFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538E358425D2ABC3000723A6 /* RealmFeedStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		08CE2BAD2285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableDeleteFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		08CE2BAE2285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableInsertFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreChallengeTests.swift; sourceTree = "<group>"; };
+		538E358425D2ABC3000723A6 /* RealmFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFeedStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			children = (
 				08CE2BA72285BCC600183A1B /* LocalFeedImage.swift */,
 				08CE2BA52285BCB600183A1B /* FeedStore.swift */,
+				538E358825D2ABC6000723A6 /* Infrastructure */,
 				08CE2B8F2285BBD100183A1B /* Info.plist */,
 			);
 			path = FeedStoreChallenge;
@@ -121,6 +124,14 @@
 				084BB13D24FE56830091C705 /* XCTestCase+FeedStoreHelpers.swift */,
 			);
 			path = FeedStoreSpecs;
+			sourceTree = "<group>";
+		};
+		538E358825D2ABC6000723A6 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				538E358425D2ABC3000723A6 /* RealmFeedStore.swift */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08CE2BA62285BCB600183A1B /* FeedStore.swift in Sources */,
+				538E358525D2ABC3000723A6 /* RealmFeedStore.swift in Sources */,
 				08CE2BA82285BCC600183A1B /* LocalFeedImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
