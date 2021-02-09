@@ -4,6 +4,7 @@
 
 import XCTest
 import FeedStoreChallenge
+import RealmSwift
 
 class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	
@@ -94,7 +95,8 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	// - MARK: Helpers
 	
 	private func makeSUT() -> FeedStore {
-		return RealmFeedStore()
+		let configuration = Realm.Configuration(inMemoryIdentifier: "\(type(of: self))")
+		return try! RealmFeedStore(configuration: configuration)
 	}
 	
 }

@@ -7,9 +7,14 @@
 //
 
 import Foundation
+import RealmSwift
 
 public final class RealmFeedStore: FeedStore {
-	public init() { }
+	private let realm: Realm
+	
+	public init(configuration: Realm.Configuration) throws {
+		realm = try Realm(configuration: configuration)
+	}
 	
 	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
 		
